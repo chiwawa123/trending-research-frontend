@@ -1,0 +1,439 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+
+  <!-- /.content-header -->
+
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <br /><br />
+      <!-- /.row -->
+      <!-- Main row -->
+        <!-- Left col -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+         
+            <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">Create Topics</h3>
+  
+                  <div class="card-tools">
+                    <button
+                      type="button"
+                      class="btn btn-tool"
+                      data-card-widget="collapse"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-tool"
+                      data-card-widget="remove"
+                    >
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+             
+                <div class="card-body">
+                  <form #AddTopicForm=ngForm (ngSubmit)="insertTopic()" enctype="multipart/form-data">  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Topic Name</label>
+                          <input type="text" class="form-control" required name="topic_name"  [(ngModel)]="topicc.topic_name" placeholder="Topic Name">
+                        </div>
+                      <!-- /.form-group -->
+                      
+                      <div class="form-group">
+                          <label>Date Posted</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                            <input type="date" class="form-control" required name="date_posted" [(ngModel)]="topicc.date_posted"  data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy" data-mask>
+                          </div>
+                          <!-- /.input group -->
+                        </div>
+                       
+                        <div class="form-group">
+                            <label>Main Slider/ Not</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" required name="slider" id="inlineRadio1" value="Visible" [(ngModel)]="topicc.slider">
+                                <label class="form-check-label" for="inlineRadio1">Visble</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" required name="slider" id="inlineRadio2" value="Invisible" [(ngModel)]="topicc.slider">
+                                <label class="form-check-label" for="inlineRadio2">Invisible</label>
+                              </div>
+                            
+                          </div>
+                        <div class="form-group">
+                          <!-- <label for="customFile">Custom File</label> -->
+      
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" (change)="imageUpload($event)">
+                            <label class="custom-file-label" for="customFile">Attach Topic Image</label>
+                          </div>
+                        </div>
+                       
+                      
+                       
+                  
+                     
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Position on Front Page</label>
+                        <div class="form-check">
+                            <input class="form-check-input" required type="radio" value="first row" name="position" id="flexRadioDefault1" [(ngModel)]="topicc.position">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                First Row
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" required type="radio" value="second row" name="position" id="flexRadioDefault2"[(ngModel)]="topicc.position" >
+                            <label class="form-check-label" for="flexRadioDefault2">
+                             Second Row
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" required type="radio" name="position" value="default" id="flexRadioDefault3" checked [(ngModel)]="topicc.position">
+                            <label class="form-check-label" for="flexRadioDefault3">
+                              Default 
+                            </label>
+                          </div>
+                      </div>
+                      <!-- /.form-group -->
+                      <!-- <div class="form-group">
+                        <label>Topic Category</label>
+                        <select class="form-control select2" style="width: 100%" name="topic_category_id" [(ngModel)]="topicc.topic_category_id">
+                          <option value="" >Select</option>
+                          <option *ngFor="let t of topicCategory" [ngValue]="t.topic_category_id" >{{t.topic_category_name}}</option>
+                         
+                          
+                        </select>
+                      </div> -->
+                      <div class="form-group">
+                          <label>Is Active</label>
+                          <div class="custom-control custom-radio">
+                            <input id="male" required type="radio" class="custom-control-input" value="True" name="is_active" [(ngModel)]="topicc.is_active">
+                            <label class="custom-control-label" for="male">True</label>
+                         </div>
+                         <div class="custom-control custom-radio">
+                            <input id="female" required  type="radio" class="custom-control-input" value="False" name="is_active" [(ngModel)]="topicc.is_active">
+                            <label class="custom-control-label" for="female">False</label>
+                         </div>
+                        </div>
+                        <div class="form-group">
+                          <ng-select [(ngModel)]="topicc.topic_category_id" required="" name="topic_category_id" >
+                            <ng-option *ngFor="let category of category" [value]="category.topic_category_id">{{category.topic_category_name}}</ng-option>
+                         </ng-select>
+                        </div>
+                    
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                  <div class="row">
+                    <label>Topic Description</label>
+                    <angular-editor [placeholder]="'Enter text here...'" required=""  name="description" [(ngModel)]="topicc.description"></angular-editor>
+                  </div>
+                 
+                  <!-- /.row -->
+                  <div class="card-footer">
+                    <button type="submit" [disabled]="AddTopicForm.invalid" class="btn btn-primary">Submit</button>
+                  </div>
+            
+                </form>
+                </div>
+                <!-- /.card-body -->
+               
+              </div>
+           
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+   
+      <!-- /.row (main row) -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <br /><br />
+      <!-- /.row -->
+      <!-- Main row -->
+        <!-- Left col -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+         
+            <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">View Topics</h3>
+  
+                  <div class="card-tools">
+                    <button
+                      type="button"
+                      class="btn btn-tool"
+                      data-card-widget="collapse"
+                    >
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-tool"
+                      data-card-widget="remove"
+                    >
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+             
+                <div class="card-body">
+                    <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" id="topicTable"
+                      class="table table-bordered table-striped table-hover " style="width: 100%;">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+            
+                          <th>Topic Name</th>
+                          <th>Topic Category</th>
+                          <th>Active</th>
+                          <th>Date Posted</th>
+                          <th>Slider</th>
+                          
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let t of topics,let i = index" >
+                          <td>{{ i + 1}}</td>
+                          <td> {{t.topic_name}}</td>
+                          <td>{{t.topic_category_name}}</td>  
+                          <td>{{t.is_active}}</td>
+                          <td> {{t.date_posted}}</td>
+                          <td>{{t.slider}}</td>
+            
+                          <td class="btn-group">
+            
+            
+            
+            
+                            <div class="btn-group">
+            
+            
+                              <i class="fa fa-ellipsis-h fa-lg"   data-toggle="dropdown"></i>
+                              <span class="sr-only">Toggle Dropdown</span>
+            
+                              <div class="dropdown-menu" role="menu">
+            
+            
+                              
+            
+                                <button class="dropdown-item "
+                                  data-toggle="modal" (click)="setTopic(t)"  [attr.data-target]="'#edit-modal-lg' + i">
+                                  <i class="fa fa-edit"></i>
+                                  Edit
+                                </button>
+            
+            
+            
+                                <button class="dropdown-item text-danger" data-toggle="modal"[attr.data-target]="'#modal-sm' + i">
+                                  <i class="fas fa-trash-alt    "></i>
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                          <!-- delete modal small -->
+                          <div class="modal fade" id="modal-sm{{ i }}">
+                            <div class="modal-dialog modal-sm">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Confimation</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p class="text-sm">
+                                    Are you sure you want to delete
+                                    &hellip;
+                                  </p>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                                    Cancel
+                                  </button>
+                                  <button type="button"  (click)="deleteTopic(t)"  data-dismiss="modal"
+                                    class="btn btn-danger btn-sm">
+                                    Delete
+                                  </button>
+                                </div>
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+                          <!-- update modal -->
+                          <div class="modal fade" id="edit-modal-lg{{i}}">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Edit</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form #EditTopicForm=ngForm (ngSubmit)="topicUpdate(t)" enctype="multipart/form-data">  
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Topic Name</label>
+                                            <input type="text" class="form-control" name="topic_name"  [(ngModel)]="topicc.topic_name" placeholder="Topic Name">
+                                          </div>
+                                        <!-- /.form-group -->
+                                        
+                                        <div class="form-group">
+                                            <label>Date Posted</label>
+                                            <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                              </div>
+                                              <input type="date" class="form-control" name="date_posted" [(ngModel)]="topicc.date_posted"  data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy" data-mask>
+                                            </div>
+                                            <!-- /.input group -->
+                                          </div>
+                                         
+                                          <div class="form-group">
+                                              <label>Main Slider/ Not</label>
+                                              <br>
+                                              <div class="form-check form-check-inline">
+                                                  <input class="form-check-input" type="radio" name="slider"  value="Visible" [(ngModel)]="topicc.slider">
+                                                  <label class="form-check-label" for="inlineRadio1">Visble</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                  <input class="form-check-input" type="radio" name="slider"  value="Invisible" [(ngModel)]="topicc.slider">
+                                                  <label class="form-check-label" for="inlineRadio2">Invisible</label>
+                                                </div>
+                                              
+                                            </div>
+                                          <div class="form-group">
+                                            <!-- <label for="customFile">Custom File</label> -->
+                        
+                                            <div class="custom-file">
+                                              <input type="file" class="custom-file-input" (change)="updateImage($event)">
+                                              <label class="custom-file-label" for="customFile">Attach Topic Image</label>
+                                            </div>
+                                          </div>
+                                         
+                                        
+                                         
+                                    
+                                       
+                                        <!-- /.form-group -->
+                                      </div>
+                                      <!-- /.col -->
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label>Position on Front Page</label>
+                                          <div class="form-check">
+                                              <input class="form-check-input" type="radio" value="first row" name="position" id="flexRadioDefault1" [(ngModel)]="topicc.position">
+                                              <label class="form-check-label" for="flexRadioDefault1">
+                                                  First Row
+                                              </label>
+                                            </div>
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="radio" value="second row" name="position" id="flexRadioDefault2"[(ngModel)]="topicc.position" >
+                                              <label class="form-check-label" for="flexRadioDefault2">
+                                               Second Row
+                                              </label>
+                                            </div>
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="radio" name="position" value="default" id="flexRadioDefault3" checked [(ngModel)]="topicc.position">
+                                              <label class="form-check-label" for="flexRadioDefault3">
+                                                Default 
+                                              </label>
+                                            </div>
+                                        </div>
+                                        <!-- /.form-group -->
+                                        <!-- <div class="form-group">
+                                          <label>Topic Category</label>
+                                          <select class="form-control select2" style="width: 100%" name="topic_category_id" [(ngModel)]="topicc.topic_category_id">
+                                            <option value="" >Select</option>
+                                            <option *ngFor="let t of topicCategory" [ngValue]="t.topic_category_id" >{{t.topic_category_name}}</option>
+                                           
+                                            
+                                          </select>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label>Is Active</label>
+                                            <div class="custom-control custom-radio">
+                                              <input id="male" type="radio" class="custom-control-input" value="True" name="is_active" [(ngModel)]="topicc.is_active">
+                                              <label class="custom-control-label" for="male">True</label>
+                                           </div>
+                                           <div class="custom-control custom-radio">
+                                              <input id="female" type="radio" class="custom-control-input" value="False" name="is_active" [(ngModel)]="topicc.is_active">
+                                              <label class="custom-control-label" for="female">False</label>
+                                           </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <ng-select [(ngModel)]="topicc.topic_category_id" name="topic_category_id" >
+                                              <ng-option *ngFor="let category of category" [value]="category.topic_category_id" [attr.selected]="category.topic_category_id== category.topic_category_name ? '': selected ">{{category.topic_category_name}}</ng-option>
+                                           </ng-select>
+                                          </div>
+                                      
+                                      </div>
+                                      <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                    <div class="row">
+                                      <label>Topic Description</label>
+                                      <angular-editor [placeholder]="'Enter text here...'"  name="description" [(ngModel)]="topicc.description"></angular-editor>
+                                    </div>
+                                   
+                                    <!-- /.row -->
+                                    <div class="card-footer">
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                              
+                                  </form>
+                                </div>
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+                          <!-- /.modal -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                <!-- /.card-body -->
+               
+              </div>
+           
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+   
+      <!-- /.row (main row) -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  
+</div>

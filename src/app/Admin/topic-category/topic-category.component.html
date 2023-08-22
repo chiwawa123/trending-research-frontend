@@ -1,0 +1,265 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+  
+    <!-- /.content-header -->
+  
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <br /><br />
+        <!-- /.row -->
+        <!-- Main row -->
+          <!-- Left col -->
+  
+          <!-- Main content -->
+          <section class="content">
+            <div class="container-fluid">
+              <!-- SELECT2 EXAMPLE -->
+           
+              <div class="card card-default">
+                  <div class="card-header">
+                    <h3 class="card-title">Create Topic Category</h3>
+    
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="collapse"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="remove"
+                      >
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+               
+                  <div class="card-body">
+                    <form #AddTopicCategoryForm=ngForm (ngSubmit)="addTopicCategoryData()" >  
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Topic Category Name</label>
+                            <input type="text" required="" class="form-control" name="topic_category_name"  [(ngModel)]="form.topic_category_name" placeholder="Topic Category Name">
+                          </div>
+                        <!-- /.form-group -->
+                        
+                     
+                      
+                        
+                       
+                        <!-- /.form-group -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-6">
+                         
+                        <div class="form-group">
+                            <label>Schools</label>
+                            <select class="form-control select2" style="width: 100%" required="" name="school_id" [(ngModel)]="form.school_id">
+                              <option value="" >Select</option>
+                              <option *ngFor="let s of schools" [ngValue]="s.school_id" >{{s.school_name}}</option>
+                             
+                              
+                            </select>
+                          </div>
+                      
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                   
+                    <!-- /.row -->
+                    <div class="card-footer">
+                      <button type="submit" [disabled]="AddTopicCategoryForm.invalid" class="btn btn-primary">Submit</button>
+                    </div>
+              
+                  </form>
+                  </div>
+                  <!-- /.card-body -->
+                 
+                </div>
+             
+              <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+     
+        <!-- /.row (main row) -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <br /><br />
+        <!-- /.row -->
+        <!-- Main row -->
+          <!-- Left col -->
+  
+          <!-- Main content -->
+          <section class="content">
+            <div class="container-fluid">
+              <!-- SELECT2 EXAMPLE -->
+           
+              <div class="card card-default">
+                  <div class="card-header">
+                    <h3 class="card-title">View Topic Category</h3>
+    
+                    <div class="card-tools">
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="collapse"
+                      >
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-tool"
+                        data-card-widget="remove"
+                      >
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+               
+                  <div class="card-body">
+                      <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" id="topicCategoryTable"
+                        class="table table-bordered table-striped table-hover " style="width: 100%;">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+              
+                            <th>Topic Category Name</th>
+                            <th>School Name</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let t of topicCategory, let i=index" >
+                            <td>{{i+1}}</td>
+                            <td>{{t.topic_category_name}} </td>
+                            <td>{{t.school_name}}</td>
+              
+                            <td class="btn-group">
+              
+              
+              
+              
+                              <div class="btn-group">
+              
+              
+                                <i class="fa fa-ellipsis-h fa-lg"   data-toggle="dropdown"></i>
+                                <span class="sr-only">Toggle Dropdown</span>
+              
+                                <div class="dropdown-menu" role="menu">
+              
+              
+                                 
+              
+                                  <button class="dropdown-item " (click)="setCategory(t)"
+                                    data-toggle="modal" [attr.data-target]="'#edit-modal-lg' + i">
+                                    <i class="fa fa-edit"></i>
+                                    Edit
+                                  </button>
+              
+              
+              
+                                  <button class="dropdown-item text-danger" data-toggle="modal"[attr.data-target]="'#modal-sm' + i">
+                                    <i class="fas fa-trash-alt    "></i>
+                                    Delete
+                                  </button>
+                                </div>
+                              </div>
+                            </td>
+                            <!-- delete modal small -->
+                            <div class="modal fade" id="modal-sm{{ i }}">
+                              <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Confimation</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p class="text-sm">
+                                      Are you sure you want to delete
+                                      &hellip;
+                                    </p>
+                                  </div>
+                                  <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                                      Cancel
+                                    </button>
+                                    <button type="button"  (click)="deleteTopicCategory(t)"   data-dismiss="modal"
+                                      class="btn btn-danger btn-sm">
+                                      Delete
+                                    </button>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <!-- update modal -->
+                            <div class="modal fade" id="edit-modal-lg{{i}}">
+                              <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Edit</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form #editTopic="ngForm" (ngSubmit)="categoryUpdate(t)">
+                                      <label for="">Topic Category Name</label>
+                                      <input type="text" required class="form-control" name="topic_category_name" [(ngModel)]="form.topic_category_name"/>
+                         
+                                          <div class="form-group">
+                                              <label>Schools</label>
+                                              <select class="form-control select2" style="width: 100%" name="school_id" [(ngModel)]="form.school_id">
+                                                <option value="" >Select</option>
+                                                <option *ngFor="let s of schools" [ngValue]="s.school_id"  >{{s.school_name}}</option>
+                                               
+                                                
+                                              </select>
+                                            </div>
+                                    
+              
+                                            <div class="card-footer">
+                                              <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                    </form>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  <!-- /.card-body -->
+                 
+                </div>
+             
+              <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+     
+        <!-- /.row (main row) -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    
+  </div>
+  
