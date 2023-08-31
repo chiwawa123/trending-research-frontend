@@ -65,8 +65,6 @@ export class TopicsComponent implements OnInit {
 
     formdata.append('image', this.file, this.file.name);
     formdata.append('topic_name', this.topicc.topic_name);
-    formdata.append('slider', this.topicc.slider);
-    formdata.append('position', this.topicc.position);
     formdata.append('is_active', this.topicc.is_active);
     formdata.append('description', this.topicc.description);
     formdata.append('date_posted', this.topicc.date_posted);
@@ -97,8 +95,6 @@ export class TopicsComponent implements OnInit {
       this.topicData();
 
       this.topicc.topic_name = '';
-      this.topicc.slider = '';
-      this.topicc.position = '';
       this.topicc.is_active = '';
       this.topicc.description = '';
       this.topicc.date_posted = '';
@@ -193,8 +189,6 @@ export class TopicsComponent implements OnInit {
 
     formdata.append('image', this.file, this.file.name);
     formdata.append('topic_name', this.topicc.topic_name);
-    formdata.append('slider', this.topicc.slider);
-    formdata.append('position', this.topicc.position);
     formdata.append('topic_id', this.topicc.topic_id);
     formdata.append('is_active', this.topicc.is_active);
     formdata.append('description', this.topicc.description);
@@ -227,8 +221,6 @@ export class TopicsComponent implements OnInit {
       this.topicData();
 
       this.topicc.topic_name = '';
-      this.topicc.slider = '';
-      this.topicc.position = '';
       this.topicc.is_active = '';
       this.topicc.description = '';
       this.topicc.date_posted = '';

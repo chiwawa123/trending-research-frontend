@@ -17,21 +17,27 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { GenderComponent } from './components/gender/gender.component';
 
 const routes: Routes = [
-  { path:'main',component:MainComponent, children:[{
+  { path:'main',component:MainComponent,   canActivate:[AfterLoginService], children:[{
 
-    path:'dashboard',component:DashboardComponent
+    path:'dashboard',component:DashboardComponent,  
+    canActivate:[AfterLoginService]
   },
-  { path:'topic', component:TopicsComponent},
-  { path:'testimonial', component:TestimonialsComponent},
-  { path:'topicCategory', component:TopicCategoryComponent},
-  { path:'school', component:SchoolsComponent},
-  { path:'student', component:StudentComponent},
-  { path:'review', component:ReviewsComponent},
-  { path:'gender', component:GenderComponent}
+  { path:'topic', component:TopicsComponent,   canActivate:[AfterLoginService]},
+  { path:'testimonial', component:TestimonialsComponent,   canActivate:[AfterLoginService]},
+  { path:'topicCategory', component:TopicCategoryComponent,    canActivate:[AfterLoginService]},
+  { path:'school', component:SchoolsComponent,    canActivate:[AfterLoginService]},
+  { path:'student', component:StudentComponent,    canActivate:[AfterLoginService]},
+  { path:'review', component:ReviewsComponent,   canActivate:[AfterLoginService]},
+  { path:'gender', component:GenderComponent,    canActivate:[AfterLoginService]}
 
 ]},
   
-  { path:'login',component:LoginComponent},
+  { path:'login',
+    component:LoginComponent,
+    canActivate:[BeforeLoginService]
+   
+  
+  },
   { path:'signup',component:SignupComponent},
 
   { path:'request-password',component:RequestResetComponent},

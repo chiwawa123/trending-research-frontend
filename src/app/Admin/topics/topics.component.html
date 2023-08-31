@@ -59,19 +59,7 @@
                           <!-- /.input group -->
                         </div>
                        
-                        <div class="form-group">
-                            <label>Main Slider/ Not</label>
-                            <br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" required name="slider" id="inlineRadio1" value="Visible" [(ngModel)]="topicc.slider">
-                                <label class="form-check-label" for="inlineRadio1">Visble</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" required name="slider" id="inlineRadio2" value="Invisible" [(ngModel)]="topicc.slider">
-                                <label class="form-check-label" for="inlineRadio2">Invisible</label>
-                              </div>
-                            
-                          </div>
+                        
                         <div class="form-group">
                           <!-- <label for="customFile">Custom File</label> -->
       
@@ -89,37 +77,8 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Position on Front Page</label>
-                        <div class="form-check">
-                            <input class="form-check-input" required type="radio" value="first row" name="position" id="flexRadioDefault1" [(ngModel)]="topicc.position">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                First Row
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" required type="radio" value="second row" name="position" id="flexRadioDefault2"[(ngModel)]="topicc.position" >
-                            <label class="form-check-label" for="flexRadioDefault2">
-                             Second Row
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" required type="radio" name="position" value="default" id="flexRadioDefault3" checked [(ngModel)]="topicc.position">
-                            <label class="form-check-label" for="flexRadioDefault3">
-                              Default 
-                            </label>
-                          </div>
-                      </div>
-                      <!-- /.form-group -->
-                      <!-- <div class="form-group">
-                        <label>Topic Category</label>
-                        <select class="form-control select2" style="width: 100%" name="topic_category_id" [(ngModel)]="topicc.topic_category_id">
-                          <option value="" >Select</option>
-                          <option *ngFor="let t of topicCategory" [ngValue]="t.topic_category_id" >{{t.topic_category_name}}</option>
-                         
-                          
-                        </select>
-                      </div> -->
+                   
+             
                       <div class="form-group">
                           <label>Is Active</label>
                           <div class="custom-control custom-radio">
@@ -212,7 +171,7 @@
                           <th>Topic Category</th>
                           <th>Active</th>
                           <th>Date Posted</th>
-                          <th>Slider</th>
+                     
                           
                           <th>Action</th>
                         </tr>
@@ -224,7 +183,7 @@
                           <td>{{t.topic_category_name}}</td>  
                           <td>{{t.is_active}}</td>
                           <td> {{t.date_posted}}</td>
-                          <td>{{t.slider}}</td>
+        
             
                           <td class="btn-group">
             
@@ -318,19 +277,7 @@
                                             <!-- /.input group -->
                                           </div>
                                          
-                                          <div class="form-group">
-                                              <label>Main Slider/ Not</label>
-                                              <br>
-                                              <div class="form-check form-check-inline">
-                                                  <input class="form-check-input" type="radio" name="slider"  value="Visible" [(ngModel)]="topicc.slider">
-                                                  <label class="form-check-label" for="inlineRadio1">Visble</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                  <input class="form-check-input" type="radio" name="slider"  value="Invisible" [(ngModel)]="topicc.slider">
-                                                  <label class="form-check-label" for="inlineRadio2">Invisible</label>
-                                                </div>
-                                              
-                                            </div>
+                                         
                                           <div class="form-group">
                                             <!-- <label for="customFile">Custom File</label> -->
                         
@@ -348,27 +295,7 @@
                                       </div>
                                       <!-- /.col -->
                                       <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label>Position on Front Page</label>
-                                          <div class="form-check">
-                                              <input class="form-check-input" type="radio" value="first row" name="position" id="flexRadioDefault1" [(ngModel)]="topicc.position">
-                                              <label class="form-check-label" for="flexRadioDefault1">
-                                                  First Row
-                                              </label>
-                                            </div>
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="radio" value="second row" name="position" id="flexRadioDefault2"[(ngModel)]="topicc.position" >
-                                              <label class="form-check-label" for="flexRadioDefault2">
-                                               Second Row
-                                              </label>
-                                            </div>
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="position" value="default" id="flexRadioDefault3" checked [(ngModel)]="topicc.position">
-                                              <label class="form-check-label" for="flexRadioDefault3">
-                                                Default 
-                                              </label>
-                                            </div>
-                                        </div>
+                                     
                                         <!-- /.form-group -->
                                         <!-- <div class="form-group">
                                           <label>Topic Category</label>
