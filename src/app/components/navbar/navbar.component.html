@@ -12,7 +12,7 @@
 
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a class="nav-link" href="#" (click)="logout($event)" *ngIf="loggedIn">Logout</a>
+      <a class="nav-link" (click)="logout($event)" *ngIf="loggedIn">Logout</a>
 
     </li>
   </ul>
@@ -21,7 +21,7 @@
   <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
     <li class="nav-item">
-      <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+      <a class="nav-link"(click)="logout($event)" *ngIf="loggedIn" role="button">
         <i class="fa fa-door-open"></i>
       </a>
     </li>

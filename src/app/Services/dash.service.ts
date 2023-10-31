@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from './token.service';
+import { ServerDetails } from '../server-details';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class DashService {
    }
 
   getDashboardData(){
-    return this.http.get("http://127.0.0.1:8000/api/dashData",{headers:this.header});
+    return this.http.get(ServerDetails.serverIP + "/dashData",{headers:this.header});
   }
 }

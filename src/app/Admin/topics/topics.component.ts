@@ -26,6 +26,7 @@ export class TopicsComponent implements OnInit {
   data: any;
   category: any;
   items: any;
+  
 
   constructor(
     private topicService: TopicService,
@@ -48,6 +49,8 @@ export class TopicsComponent implements OnInit {
     });
   }
   ngOnInit() {
+    
+    
     this.topicData();
     this.GetTopicCategory();
     this.topicc.topic_category_id = '';
@@ -59,6 +62,7 @@ export class TopicsComponent implements OnInit {
       destroy:true
     };
   }
+  
 
   insertTopic() {
     var formdata = new FormData();
@@ -66,6 +70,8 @@ export class TopicsComponent implements OnInit {
     formdata.append('image', this.file, this.file.name);
     formdata.append('topic_name', this.topicc.topic_name);
     formdata.append('is_active', this.topicc.is_active);
+    formdata.append('first_name', this.topicc.first_name);
+    formdata.append('last_name', this.topicc.last_name);
     formdata.append('description', this.topicc.description);
     formdata.append('date_posted', this.topicc.date_posted);
     formdata.append('topic_category_id', this.topicc.topic_category_id);

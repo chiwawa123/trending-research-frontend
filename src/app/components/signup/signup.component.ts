@@ -37,6 +37,6 @@ export class SignupComponent implements OnInit {
   }
   handleResponse(data: any) {
     this.token.handle(data.access_token);
-    this.route.navigateByUrl('/dashboard');
+    this.route.navigateByUrl('/main/dashboard');
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
+import { ServerDetails } from '../server-details';
 
 @Injectable({
   providedIn: 'root'
@@ -8,24 +9,24 @@ import { TokenService } from './token.service';
 export class TestimonialService {
   header:any;
 
-  constructor(private http:HttpClient, private headers:TokenService) {
+  constructor(private http:HttpClient, public headers:TokenService) {
     this.header= headers.getHeaders();
    }
   
   getTestimonilas(){
-    return this.http.get('http://127.0.0.1:8000/api/viewTestimonial',{headers:this.header});
+    return this.http.get(ServerDetails.serverIP + '/viewTestimonial',{headers:this.header});
 
   }
 
   addTestimonial(data:any){
-    return this.http.post("http://127.0.0.1:8000/api/addTestimonial",data, {headers:this.header});
+    return this.http.post(ServerDetails.serverIP + "/addTestimonial",data);
   }
 
   removeTestimonial(data:any){
-    return this.http.post('http://127.0.0.1:8000/api/deleteTestimonial',data,{headers:this.header});
+    return this.http.post(ServerDetails.serverIP + '/deleteTestimonial',data,{headers:this.header});
   }
   updateTestimonial(data:any){
-    return this.http.post("http://127.0.0.1:8000/api/updateTestimonial",data,{headers:this.header});
+    return this.http.post(ServerDetails.serverIP + "/updateTestimonial",data,{headers:this.header});
   }
 
 

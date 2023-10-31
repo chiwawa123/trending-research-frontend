@@ -9,6 +9,9 @@ export class TokenService {
   private iss = {
     'login': 'http://127.0.0.1:8000/api/login',
     'signup': 'http://127.0.0.1:8000/api/signup',
+
+    // 'login': 'http://10.52.20.20/Junior/backend/public/api/login',
+    // 'signup': 'http://10.52.20.20/Junior/backend/public/api/signup',
   };
   
 
@@ -66,7 +69,7 @@ export class TokenService {
     });
 
     
-    console.log('headers  ', headers);
+    // console.log('headers  ', headers);
     
     return headers;
   }

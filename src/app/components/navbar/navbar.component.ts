@@ -13,23 +13,15 @@ export class NavbarComponent implements OnInit {
 
   public loggedIn: boolean= false;
  
-  
   constructor(private authService:AuthService,private route:Router,private token:TokenService){}
 
   ngOnInit(){
-
     this.authService.authStatus.subscribe(value=>this.loggedIn=value);
-      
   }
-
   logout(event:MouseEvent){
     event.preventDefault();
     this.token.remove();
     this.authService.changeAuthStatus(false);
     this.route.navigateByUrl('/login');
   }
-
-
-
-
 }

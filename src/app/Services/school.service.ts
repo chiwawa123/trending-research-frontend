@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
+import { ServerDetails } from '../server-details';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class SchoolService {
   }
 
   getSchools(){
-    return this.http.get('http://127.0.0.1:8000/api/viewSchool',{headers:this.header});
+    return this.http.get(ServerDetails.serverIP + '/viewSchool',{headers:this.header});
   }
 }

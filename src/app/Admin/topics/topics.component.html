@@ -3,6 +3,77 @@
 
   <!-- /.content-header -->
 
+  <style>
+    body{
+	background-color: #fff;
+}
+.container{
+	background-color: #eef2f5;
+	width: 400px;
+}
+.addtxt{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 13px;
+	width: 350px;
+	background-color: #e5e8ed;
+	font-weight: 500;
+}
+.form-control: focus{
+	color: #000;
+}
+.second{
+	width: 350px;
+	background-color: white;
+	border-radius: 4px;
+	box-shadow: 10px 10px 5px #aaaaaa;
+}
+.text1{
+	font-size: 13px;
+    font-weight: 500;
+    color: #56575b;
+}
+.text2{
+	font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
+    color: #56575b;
+}
+.text3{
+	font-size: 13px;
+    font-weight: 500;
+    margin-right: 4px;
+    color: #828386;
+}
+.text3o{
+	color: #00a5f4;
+
+}
+.text4{
+	font-size: 13px;
+    font-weight: 500;
+    color: #828386;
+}
+.text4i{
+	color: #00a5f4;
+}
+.text4o{
+	color: white;
+}
+.thumbup{
+	font-size: 13px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+.thumbupo{
+	color: #17a2b8;
+}
+
+
+
+  </style>
+
   <section class="content">
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
@@ -16,9 +87,9 @@
           <div class="container-fluid">
             <!-- SELECT2 EXAMPLE -->
          
-            <div class="card card-default">
+            <div class="card card-default" >
                 <div class="card-header">
-                  <h3 class="card-title">Create Topics</h3>
+                  <h3 class="card-title" style="color: #fff;">Create Topics</h3>
   
                   <div class="card-tools">
                     <button
@@ -42,6 +113,10 @@
                   <form #AddTopicForm=ngForm (ngSubmit)="insertTopic()" enctype="multipart/form-data">  
                   <div class="row">
                     <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">First Name</label>
+                        <input type="text" class="form-control" required name="first_name"  [(ngModel)]="topicc.first_name" placeholder="First Name">
+                      </div>
                       <div class="form-group">
                           <label for="exampleInputEmail1">Topic Name</label>
                           <input type="text" class="form-control" required name="topic_name"  [(ngModel)]="topicc.topic_name" placeholder="Topic Name">
@@ -77,6 +152,10 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Last Name</label>
+                        <input type="text" class="form-control" required name="last_name"  [(ngModel)]="topicc.last_name" placeholder="Last Name">
+                      </div>
                    
              
                       <div class="form-group">
@@ -91,8 +170,9 @@
                          </div>
                         </div>
                         <div class="form-group">
+                          <label>Topic Category</label>
                           <ng-select [(ngModel)]="topicc.topic_category_id" required="" name="topic_category_id" >
-                            <ng-option *ngFor="let category of category" [value]="category.topic_category_id">{{category.topic_category_name}}</ng-option>
+                            <ng-option *ngFor="let category of category" [value]="category.topic_category_id">{{category.topic_category_name}}-{{category.school_name}}</ng-option>
                          </ng-select>
                         </div>
                     
@@ -140,7 +220,7 @@
          
             <div class="card card-default">
                 <div class="card-header">
-                  <h3 class="card-title">View Topics</h3>
+                  <h3 class="card-title" style="color: #fff;">View Topics</h3>
   
                   <div class="card-tools">
                     <button
@@ -166,7 +246,8 @@
                       <thead>
                         <tr>
                           <th>No</th>
-            
+                          <th>First Name</th>
+                          <th>Last Name</th>
                           <th>Topic Name</th>
                           <th>Topic Category</th>
                           <th>Active</th>
@@ -179,6 +260,8 @@
                       <tbody>
                         <tr *ngFor="let t of topics,let i = index" >
                           <td>{{ i + 1}}</td>
+                          <td> {{t.first_name}}</td>
+                          <td> {{t.last_name}}</td>
                           <td> {{t.topic_name}}</td>
                           <td>{{t.topic_category_name}}</td>  
                           <td>{{t.is_active}}</td>
@@ -264,6 +347,11 @@
                                             <label for="exampleInputEmail1">Topic Name</label>
                                             <input type="text" class="form-control" name="topic_name"  [(ngModel)]="topicc.topic_name" placeholder="Topic Name">
                                           </div>
+
+                                          <div class="form-group">
+                                            <label for="exampleInputEmail1">First Name</label>
+                                            <input type="text" class="form-control" name="first_name"  [(ngModel)]="topicc.first_name" placeholder="Author First Name">
+                                          </div>
                                         <!-- /.form-group -->
                                         
                                         <div class="form-group">
@@ -307,6 +395,10 @@
                                           </select>
                                         </div> -->
                                         <div class="form-group">
+                                          <label for="exampleInputEmail1">Last Name</label>
+                                          <input type="text" class="form-control" name="last_name"  [(ngModel)]="topicc.last_name" placeholder="Author Last Name">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Is Active</label>
                                             <div class="custom-control custom-radio">
                                               <input id="male" type="radio" class="custom-control-input" value="True" name="is_active" [(ngModel)]="topicc.is_active">
@@ -319,7 +411,7 @@
                                           </div>
                                           <div class="form-group">
                                             <ng-select [(ngModel)]="topicc.topic_category_id" name="topic_category_id" >
-                                              <ng-option *ngFor="let category of category" [value]="category.topic_category_id" [attr.selected]="category.topic_category_id== category.topic_category_name ? '': selected ">{{category.topic_category_name}}</ng-option>
+                                              <ng-option *ngFor="let category of category" [value]="category.topic_category_id" [attr.selected]="category.topic_category_id== category.topic_category_name ? '': selected ">{{category.topic_category_name}}-{{category.school_name}}</ng-option>
                                            </ng-select>
                                           </div>
                                       

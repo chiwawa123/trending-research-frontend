@@ -34,12 +34,9 @@ const routes: Routes = [
   
   { path:'login',
     component:LoginComponent,
-    canActivate:[BeforeLoginService]
-   
-  
+    canActivate:[BeforeLoginService] 
   },
   { path:'signup',component:SignupComponent},
-
   { path:'request-password',component:RequestResetComponent},
   { path:'response-password-reset',component:ResponseResetComponent},
   {

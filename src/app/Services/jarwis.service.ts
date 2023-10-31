@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ServerUrl } from '../server-url.model';
 import { TokenService } from './token.service';
+import { ServerDetails } from '../server-details';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JarwisService {
 
-  private serverDetails = new ServerUrl;
   header:any;
 
   constructor(private http:HttpClient,private headers:TokenService) { 
@@ -17,11 +17,11 @@ export class JarwisService {
 
   signUp(data:any){
 
-    return this.http.post('http://127.0.0.1:8000/api/signup', data,{headers:this.header})
+    return this.http.post(ServerDetails.serverIP + '/signup', data,{headers:this.header})
   }
 
   login(data:any){
-    return this.http.post('http://127.0.0.1:8000/api/login', data,{headers:this.header})
+    return this.http.post(ServerDetails.serverIP + '/login', data,{headers:this.header})
   }
 
 

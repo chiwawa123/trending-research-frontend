@@ -25,6 +25,7 @@ export class TestimonialsComponent implements OnInit{
   description:null,
   student_id:null,
   topic_id:null,
+  is_active:'',
   date_posted:null,
   testimonial_id:null,
 
@@ -50,6 +51,7 @@ export class TestimonialsComponent implements OnInit{
   getTestimonialData(){
     this.testimonialService.getTestimonilas().subscribe(res=>{
       this.testimonials=res;
+      console.log(this.testimonials);
       var table=$('#testimonialTable').DataTable();
       table.destroy();
       this.dtTrigger.next(null);
@@ -140,7 +142,35 @@ export class TestimonialsComponent implements OnInit{
     });
   }
   setTestimonial(t:any){
-    this.form=t;
+    var status = 'active';
+    this.form.is_active = status;
+    this.form.testimonial_id = t.testimonial_id;
+    this.testimonialService.updateTestimonial(this.form).subscribe(res=>{
+      t=res;
+    
+      this.data=t;
+   
+      if (this.data.status == 200) {
+        this.toastr.success(
+          JSON.stringify(this.data.message),
+          JSON.stringify(this.data.data),
+          {
+            timeOut: 6000,
+            progressBar: true,
+          }
+        );
+      } else {
+        this.toastr.error(
+          JSON.stringify(this.data.message),
+          JSON.stringify(this.data.data),
+          {
+            timeOut: 6000,
+            progressBar: true,
+          }
+        );
+      }
+      this.getTestimonialData();
+    });
     
   }
 

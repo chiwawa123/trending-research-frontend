@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
+import { ServerDetails } from '../server-details';
 
 @Injectable({
   providedIn: 'root'
@@ -8,25 +9,22 @@ import { TokenService } from './token.service';
 export class TopicService {
 
   header:any;
-
-  constructor(private http:HttpClient, private headers: TokenService) { 
+  constructor(private http:HttpClient, public headers: TokenService) { 
     this.header= headers.getHeaders();
   }
-
   getTopics(){
-
-    return this.http.get('http://127.0.0.1:8000/api/viewTopics',{headers:this.header});
+    return this.http.get(ServerDetails.serverIP + '/viewTopics',{headers:this.header});
   }
   postTopic(data:any){
-    return this.http.post('http://127.0.0.1:8000/api/addTopic',data);
+    return this.http.post(ServerDetails.serverIP + '/addTopic',data);
   }
 
   removeTopic(data:any){
-    return this.http.post("http://127.0.0.1:8000/api/deleteTopic",data,{headers:this.header});
+    return this.http.post(ServerDetails.serverIP + "/deleteTopic",data,{headers:this.header});
   }
 
   updateTopic(data:any){
-    return this.http.post('http://127.0.0.1:8000/api/updateTopic',data);
+    return this.http.post(ServerDetails.serverIP + '/updateTopic',data);
   }
  
 }
